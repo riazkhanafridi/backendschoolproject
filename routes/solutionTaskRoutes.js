@@ -1,6 +1,6 @@
 const {
   submitTaskSolution,
-  getPendingTasks,
+
   updateSolutionTask,
   deleteSolutionTask,
   getAllTaskSolution,
@@ -29,7 +29,7 @@ const uploadFile = multer({
 routes.post(
   "/assigntasksolution",
   protect,
-  restrict("admin"),
+
   uploadFile.single("image"),
   submitTaskSolution
 );
@@ -37,7 +37,7 @@ routes.post(
 routes.get("/getAllTaskSolution", protect, getAllTaskSolution);
 routes.get("/getSingleTaskSolution/:id", protect, getSingleTaskSolution);
 routes.get("/user-task-solution/:id", protect, getUsersTaskSolution);
-routes.get("/pending-task/:id", protect, getPendingTasks);
+
 routes.get(
   "/rejected-task-solution/:id",
   protect,
@@ -49,12 +49,12 @@ routes.get(
   getUsersApprovedTaskSolution
 );
 
-routes.put(
+routes.patch(
   "/approved-task-solution/:taskSolutionId",
   protect,
   approveTaskSolution
 );
-routes.put(
+routes.patch(
   "/reject-task-solution/:taskSolutionId",
   protect,
   rejectTaskSolution

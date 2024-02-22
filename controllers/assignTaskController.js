@@ -1,5 +1,7 @@
 const AssignTaskModel = require("../models/assignTaskModel");
 const UserModel = require("../models/UserModel");
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Types.ObjectId;
 
 const moment = require("moment");
 
@@ -40,6 +42,7 @@ const getAllUsersAssignedTasks = async (req, res) => {
 
 const getAllSchoolAssignedTasks = async (req, res) => {
   try {
+    const id = req.params.id;
     const data = await AssignTaskModel.find({
       school_id: req.params.id,
     }).populate({

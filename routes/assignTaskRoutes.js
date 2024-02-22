@@ -12,7 +12,7 @@ const restrict = require("../middlewares/roleMiddleware");
 const express = require("express");
 const routes = express.Router();
 
-routes.post("/assigntask", protect, restrict("admin"), createAssignTask);
+routes.post("/assigntask", protect, restrict("teacher"), createAssignTask);
 routes.get(
   "/getallassignTask",
   protect,
@@ -41,13 +41,13 @@ routes.patch(
   "/assignTaskupdate/:id",
 
   protect,
-  restrict("admin"),
+  restrict("teacher"),
   updateAssignTask
 );
 routes.delete(
   "/assignTaskdelete/:id",
   protect,
-  restrict("admin"),
+  restrict("teacher"),
   deleteAssignTask
 );
 

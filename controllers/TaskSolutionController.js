@@ -120,6 +120,8 @@ const getUsersApprovedTaskSolution = async (req, res) => {
 const approveTaskSolution = async (req, res) => {
   const { taskSolutionId } = req.params;
   try {
+    console.log("Task Solution ID:", taskSolutionId);
+
     const objectId = new mongoose.Types.ObjectId(taskSolutionId);
     console.log("Received Task Solution ID:", taskSolutionId);
 

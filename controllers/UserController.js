@@ -166,7 +166,7 @@ const forgotPassword = async (req, res) => {
 
     // Modify the token as needed for security reasons
 
-    const resetLink = `http://localhost:3000/api/reset-password/${token}`;
+    const resetLink = `http://localhost:3001/reset-password/${token}`;
 
     var mailOptions = {
       from: "riazkhanafridi96@gmail.com",

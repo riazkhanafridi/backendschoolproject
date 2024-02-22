@@ -10,26 +10,24 @@ const tasksolutionroute = require("./routes/solutionTaskRoutes");
 const commentroute = require("./routes/CommentRoutes");
 const awardRoute = require("./routes/AwardRoutes");
 const AssignAwardRoute = require("./routes/AssignAwardRoute");
-const cookieParser = require("cookie-parser");
+require("dotenv").config();
+
 // ...
 
 const cors = require("cors");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 mongoose
-  .connect(
-    "mongodb+srv://riazkhanafridi96:afridi12345@riaz1.ddga6ic.mongodb.net/?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => {
     console.log("Connected to MongoDB");
     app.listen(port, () => {

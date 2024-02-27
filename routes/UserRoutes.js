@@ -33,6 +33,6 @@ route.get("/getstdassign-teacher/:id", getAssignedStudents);
 route.get("/getuserinfo/:id", protect, restrict("admin"), getOneStudentInfo);
 route.get("/getallusers", getAllUsers);
 route.patch("/update/:id", protect, UpdateUser);
-route.delete("/delete/:id", protect, restrict("student"), deleteUser);
+route.delete("/delete/:id", protect, restrict("admin"), deleteUser);
 
 module.exports = route;

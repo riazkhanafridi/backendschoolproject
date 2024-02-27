@@ -22,12 +22,17 @@ route.post("/login", loginUser);
 route.get("/logout", logOutUser);
 route.post("/forget-password", forgotPassword);
 route.post("/reset-password/:token", resetPassword);
-route.patch("/users/:id/assign-teacher", assignStdToTeacher);
+route.patch(
+  "/users/:id/assign-teacher",
+  protect,
+  restrict("admin"),
+  assignStdToTeacher
+);
 route.get("/getstdassign-teacher/:id", getAssignedStudents);
 
 route.get("/getuserinfo/:id", protect, restrict("admin"), getOneStudentInfo);
-route.get("/getallusers", protect, restrict("admin"), getAllUsers);
-route.patch("/update/:id", protect, restrict("admin"), UpdateUser);
-route.delete("/delete/:id", protect, restrict("admin"), deleteUser);
+route.get("/getallusers", getAllUsers);
+route.patch("/update/:id", protect, UpdateUser);
+route.delete("/delete/:id", protect, restrict("student"), deleteUser);
 
 module.exports = route;

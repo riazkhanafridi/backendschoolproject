@@ -12,7 +12,7 @@ const restrict = require("../middlewares/roleMiddleware");
 const express = require("express");
 const routes = express.Router();
 
-routes.post("/assigntask", protect, restrict("teacher"), createAssignTask);
+routes.post("/assigntask", protect, createAssignTask);
 routes.get(
   "/getallassignTask",
   protect,
@@ -22,6 +22,7 @@ routes.get(
 routes.get(
   "/getSingleAssignTask/:id",
   protect,
+  restrict("teacher"),
 
   getSingleAssignTask
 );
@@ -34,6 +35,7 @@ routes.get(
 routes.get(
   "/getallschoolassignTask/:id",
   protect,
+  restrict("teacher"),
 
   getAllSchoolAssignedTasks
 );

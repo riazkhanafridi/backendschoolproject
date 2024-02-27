@@ -11,12 +11,12 @@ const restrict = require("../middlewares/roleMiddleware");
 const express = require("express");
 const routes = express.Router();
 
-routes.post("/school", protect, createSchools);
+routes.post("/school", protect, restrict("admin"), createSchools);
 routes.get("/teachers", protect, restrict("admin"), getAllSchoolsTeachers);
 routes.get("/students", protect, restrict("admin"), getAllSchoolsStudents);
-routes.get("/getallschools", protect, getAllSchools);
-routes.patch("/updateschool/:id", protect, updateSchool);
-routes.delete("/deleteschool/:id", protect, deleteSchool);
+routes.get("/getallschools", protect, restrict("admin"), getAllSchools);
+routes.patch("/updateschool/:id", protect, restrict("admin"), updateSchool);
+routes.delete("/deleteschool/:id", protect, restrict("admin"), deleteSchool);
 
 module.exports = routes;
 
